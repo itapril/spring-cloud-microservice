@@ -1,0 +1,30 @@
+#
+server:
+  port: 9761        #指定改Eureka实例的端口
+
+
+jwt:
+  secret: itapril
+  expiration: 1000
+
+#eureka:
+#  instance:
+#    hostname: 127.0.0.1
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#security:
+#  basic:
+#    enabled: false
+#
+#management:
+#  security:
+#    enabled: true
+
+
+spring:
+  resources:
+    chain:
+      enabled: true
