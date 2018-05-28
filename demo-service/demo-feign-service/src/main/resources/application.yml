@@ -1,0 +1,12 @@
+
+server:
+  port: 8764        #指定改Eureka实例的端口
+eureka:
+  instance:
+#    lease-renewal-interval-in-seconds: 10 #租期更新时间间隔（默认30秒）
+#    lease-expiration-duration-in-seconds: 30 #租期到期时间（默认90秒）
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: demo-feign-service

@@ -2,8 +2,12 @@
 server:
   port: 8761        #指定改Eureka实例的端口
 eureka:
+  server:
+#    enable-self-preservation: false # 关闭自我保护
+#    eviction-interval-timer-in-ms: 3000  #清理时间间隔 默认是60*1000
   instance:
-    hostname: 127.0.0.1
+    prefer-ip-address: true  #设置显示IP
+    hostname:  localhost
   client:
     register-with-eureka: false
     fetch-registry: false

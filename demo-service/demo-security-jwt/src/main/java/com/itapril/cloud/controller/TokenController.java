@@ -62,4 +62,21 @@ public class TokenController {
         return flag;
     }
 
+    @PostMapping(value = "getTokenDate")
+    public JSONObject getTokenDate(@RequestBody String param){
+        JSONObject paramObject = JSONObject.parseObject(param);
+        String token = paramObject.getString("token");
+        Date createTokenDate = jwtTokenUtil.getCreatedDateFromToken(token);
+        Date expirationTokenDate = jwtTokenUtil.getExpirationDateFromToken(token);
+        String refreshToken = jwtTokenUtil.refreshToken(token);
+        paramObject.put("createTokenDate",createTokenDate);
+        paramObject.put("expirationTokenDate",expirationTokenDate);
+        paramObject.put("refreshToken",refreshToken);
+        paramObject.put("token",token);
+        System.out.println(paramObject);
+        return paramObject;
+    }
+
+
+
 }

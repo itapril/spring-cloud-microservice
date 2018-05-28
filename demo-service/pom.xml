@@ -13,6 +13,9 @@
 	
 	<modules>
         <module>demo-security-jwt</module>
+		<module>demo-ribbon-service</module>
+		<module>demo-provider-service</module>
+		<module>demo-feign-service</module>
     </modules>
 
 
