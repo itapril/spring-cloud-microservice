@@ -10,3 +10,4 @@ eureka:
 spring:
   application:
     name: demo-feign-service
+

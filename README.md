@@ -1,6 +1,9 @@
 # spring-cloud-microservice
 spring-cloud-microservice
 
+http://localhost:8761/health
+http://localhost:8761/info
+
 
 java -jar spring-cloud.jar > log.file 2>&1 &
 

@@ -7,6 +7,9 @@ eureka:
 #    lease-expiration-duration-in-seconds: 30 #租期到期时间（默认90秒）
     service-url:
       defaultZone: http://10.15.21.114:8761/eureka/
+    prefer-ip-address: true
 spring:
   application:
     name: demo-ribbon-service
+#处理 增加hystrix 之后 第一次请求报错
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000

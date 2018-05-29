@@ -16,6 +16,7 @@
 		<module>demo-ribbon-service</module>
 		<module>demo-provider-service</module>
 		<module>demo-feign-service</module>
+		<module>demo-gateway-service</module>
     </modules>
 
 

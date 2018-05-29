@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: demo-gateway-service
+server:
+  port: 8765        #指定服务端口
+eureka:
+  instance:
+#    lease-renewal-interval-in-seconds: 10 #租期更新时间间隔（默认30秒）
+#    lease-expiration-duration-in-seconds: 30 #租期到期时间（默认90秒）
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  routes:
+    simple:
+      # 该设置  如果访问  localhost:8765/sample   会相当于访问  http://localhost:8761/
+      path: /sample/**
+      serviceId: eureka-service
+    sample-provider:
+      # 该设置  如果访问 http://localhost:8765/provider/hello?name=hello&port=8765  会相当于访问    http://localhost:8761/hello?name=hello&port=8765
+      path: /provider/**
+      serviceId: demo-provider-service
