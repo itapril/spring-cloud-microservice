@@ -17,6 +17,7 @@ public class HelloController {
     }
 
 
+
     @GetMapping("getUser")
     public User getUser(User user){
         System.out.println("the user is " + user.toString());
