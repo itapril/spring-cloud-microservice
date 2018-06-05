@@ -14,6 +14,9 @@ import java.io.IOException;
  */
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint{
+
+
+    // 当访问的资源没有权限，会调用这里
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         // This is invoked when user tries to access a secured REST resource without supplying any credentials

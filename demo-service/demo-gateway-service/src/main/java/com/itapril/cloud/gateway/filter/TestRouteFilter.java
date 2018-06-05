@@ -2,7 +2,6 @@ package com.itapril.cloud.gateway.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +12,7 @@ public class TestRouteFilter extends ZuulFilter{
 
     @Override
     public String filterType() {
-        return FilterConstants.ROUTE_TYPE;
+        return "route";
     }
 
     @Override

@@ -4,20 +4,17 @@
 
 	<parent>
 		<groupId>com.itapril.cloud</groupId>
-		<artifactId>spring-cloud-microservice</artifactId>
+		<artifactId>demo-service</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>demo-service</artifactId>
+	<artifactId>demo-oauth</artifactId>
 	<packaging>pom</packaging>
 	
 	<modules>
-        <module>demo-security-jwt</module>
-		<module>demo-ribbon-service</module>
-		<module>demo-provider-service</module>
-		<module>demo-feign-service</module>
-		<module>demo-gateway-service</module>
-		<module>demo-oauth</module>
+        <module>demo-oauth-gateway</module>
+		<module>demo-oauth-server</module>
+		<module>demo-oauth-client</module>
     </modules>
 
 

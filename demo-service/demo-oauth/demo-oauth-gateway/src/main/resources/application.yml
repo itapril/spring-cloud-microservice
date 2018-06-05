@@ -1,0 +1,30 @@
+
+spring:
+  application:
+    name: demo-oauth-gateway
+
+server:
+  port: 8765        #指定改Eureka实例的端口
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+zuul:
+  ignored-services: '*'
+  routes:
+    oauth-server:
+      path: /auth/**
+      serviceId: demo-auth-server
+      sensitiveHeaders:
+      strip-prefix: false
+
+    oauth-client:
+      path: /client/**
+      serviceId: demo-oauth-client
+      sensitiveHeaders:
+      strip-prefix: false
+
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000

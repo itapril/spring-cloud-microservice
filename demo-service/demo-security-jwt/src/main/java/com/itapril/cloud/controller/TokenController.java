@@ -19,6 +19,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("token")
 public class TokenController {
+
     private JwtGenerator jwtGenerator;
 
     @Autowired
@@ -38,6 +39,7 @@ public class TokenController {
 
     @PostMapping(value = "create")
     public String createToken(@RequestBody final JwtUser jwtUser){
+
         String username = jwtUser.getUserName();
 //        final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 //        UserDetails userDetails = new UserDetails();
