@@ -4,25 +4,26 @@
 
 	<parent>
 		<groupId>com.itapril.cloud</groupId>
-		<artifactId>spring-cloud-microservice</artifactId>
+		<artifactId>demo-oauth-jwt</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>demo-service</artifactId>
-	<packaging>pom</packaging>
-	
-	<modules>
-        <module>demo-security-jwt</module>
-		<module>demo-ribbon-service</module>
-		<module>demo-provider-service</module>
-		<module>demo-feign-service</module>
-		<module>demo-gateway-service</module>
-		<module>demo-oauth</module>
-		<module>demo-oauth-jwt</module>
-    </modules>
+	<artifactId>demo-oauth-jwt-server</artifactId>
+	<packaging>jar</packaging>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+		</dependency>
+	</dependencies>
 
 	<build>
+		<finalName>demo-oauth-jwt-server</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

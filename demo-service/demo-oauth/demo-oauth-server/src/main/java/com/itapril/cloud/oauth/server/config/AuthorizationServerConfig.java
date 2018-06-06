@@ -26,6 +26,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception{
         endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore()).userDetailsService(userDetailsService);
+        endpoints.reuseRefreshTokens(true);
     }
 
     @Override
@@ -36,10 +37,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception{
         clients.inMemory()
+                //分配客户端的账号
                 .withClient("itapril")
+                //支持的授权类型
                 .authorizedGrantTypes("authorization_code","refresh_token","password")
                 .scopes("ui")
                 .secret("itapril")
+                //token的有效时长
+                .accessTokenValiditySeconds(1200)
+                //refreshToken的有效时长
+                .refreshTokenValiditySeconds(50000)
                 .and()
                 .withClient("resource-server")
                 .secret("root")

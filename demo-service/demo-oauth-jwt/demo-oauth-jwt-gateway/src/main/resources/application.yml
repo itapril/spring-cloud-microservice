@@ -1,0 +1,50 @@
+
+spring:
+  application:
+    name: demo-oauth-jwt-gateway
+
+server:
+  port: 7765
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#zuul:
+#  ignored-services: '*'
+#  routes:
+#    oauth-server:
+#      path: /auth/**
+#      serviceId: demo-oauth-jwt-server
+#      sensitiveHeaders:
+#      strip-prefix: false
+#
+#    oauth-client:
+#      path: /client/**
+#      serviceId: demo-oauth-jwt-client
+#      sensitiveHeaders:
+#      strip-prefix: false
+
+zuul:
+  ignoredServices: '*'
+  routes:
+#   这里的名称要跟  服务的名称一致
+    demo-oauth-jwt-server: /auth/**
+    demo-oauth-jwt-client: /client/**
+  sensitive-headers:
+
+security:
+  oauth2:
+    client:
+      clientId: client
+      clientSecret: client-secret
+    resource:
+#      token-info-uri: http://localhost:7766/oauth/check_token
+      token-info-uri: http://demo-oauth-jwt-server/oauth/check_token
+      prefer-token-info: true
+      jwt:
+        key-uri: http://localhost:7766/oauth/token_key
+#        key-uri: http://demo-oauth-jwt-server/oauth/token_key
+  sessions: stateless
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
