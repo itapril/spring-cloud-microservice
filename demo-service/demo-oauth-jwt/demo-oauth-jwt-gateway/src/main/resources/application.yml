@@ -30,19 +30,28 @@ zuul:
   routes:
 #   这里的名称要跟  服务的名称一致
     demo-oauth-jwt-server: /auth/**
+#    如果 demo-oauth-jwt-client 中的yml中设置了 context-path: client  http://localhost:7765/client/client/test
     demo-oauth-jwt-client: /client/**
+#    也可以使用下面的设置， 如果 demo-oauth-jwt-client 中的yml中设置了 context-path: client  则访问路径为 http://localhost:7765/client/test
+#    demo-oauth-jwt-client: /**
   sensitive-headers:
 
+#参数解释 https://segmentfault.com/a/1190000004309242
+# 下面的配置   不需要也能成功？？？
 security:
   oauth2:
     client:
       clientId: client
       clientSecret: client-secret
-    resource:
-#      token-info-uri: http://localhost:7766/oauth/check_token
-      token-info-uri: http://demo-oauth-jwt-server/oauth/check_token
+#    resource:
+#      user-info-uri: http://localhost:7766/user1
+#      prefer-token-info: false
+      token-info-uri: http://localhost:7766/oauth/check_token
+      #token 解码的URI
+#      token-info-uri: http://demo-oauth-jwt-server/oauth/check_token
       prefer-token-info: true
       jwt:
+        #JWT token的URI. 当key为公钥时，或者value不指定时指定.
         key-uri: http://localhost:7766/oauth/token_key
 #        key-uri: http://demo-oauth-jwt-server/oauth/token_key
   sessions: stateless

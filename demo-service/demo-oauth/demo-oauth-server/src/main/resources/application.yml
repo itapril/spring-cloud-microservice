@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-auth-server
+    name: demo-oauth-server
 server:
   port: 8766        #指定改Eureka实例的端口
   context-path: /auth

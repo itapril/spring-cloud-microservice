@@ -25,6 +25,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private AuthenticationManager authenticationManager;
     @Autowired
     private UserDetailsService userDetailsService;
+//    @Autowired
+//    private WebAuthenticationEntryPoint entryPoint;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -63,6 +65,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         security.allowFormAuthenticationForClients()
                 .tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
+
+//        security.authenticationEntryPoint(entryPoint);
     }
 
 

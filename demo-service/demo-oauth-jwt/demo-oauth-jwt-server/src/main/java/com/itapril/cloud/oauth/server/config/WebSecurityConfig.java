@@ -20,6 +20,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private WebAuthenticationEntryPoint entryPoint;
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -28,11 +30,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.formLogin()
-                .and()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
+        System.out.println("---");
+        http.formLogin()    //表单登录
+                .and().authorizeRequests() // 所有请求都需要认证
+//                .antMatchers("/user1/**").permitAll()
+                .anyRequest().authenticated()
+                .and().exceptionHandling().authenticationEntryPoint(entryPoint)
                 .and()
                 .csrf().disable();
     }

@@ -16,7 +16,7 @@ zuul:
   routes:
     oauth-server:
       path: /auth/**
-      serviceId: demo-auth-server
+      serviceId: demo-oauth-server
       sensitiveHeaders:
       strip-prefix: false
 
@@ -25,6 +25,16 @@ zuul:
       serviceId: demo-oauth-client
       sensitiveHeaders:
       strip-prefix: false
+
+
+#使用下面报404
+#zuul:
+#  ignoredServices: '*'
+#  routes:
+##   这里的名称要跟  服务的名称一致
+#    demo-oauth-server: /auth/**
+#    demo-oauth-client: /client/**
+#  sensitive-headers:
 
 
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000

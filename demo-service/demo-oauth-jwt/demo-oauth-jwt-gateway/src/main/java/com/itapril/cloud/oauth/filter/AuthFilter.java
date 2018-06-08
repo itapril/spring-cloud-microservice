@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 public class AuthFilter extends ZuulFilter{
     @Override
     public String filterType() {
-        return "per";
+        return "pre";
     }
 
     @Override
     public int filterOrder() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -27,8 +27,9 @@ public class AuthFilter extends ZuulFilter{
 
     @Override
     public Object run() {
-
+        System.out.println("----------> " );
         Authentication authorization = SecurityContextHolder.getContext().getAuthentication();
+
         System.out.println("----------> " + authorization);
         return null;
     }

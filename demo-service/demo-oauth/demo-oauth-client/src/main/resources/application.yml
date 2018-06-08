@@ -22,4 +22,5 @@ security:
       prefer-token-info: false
       service-id: demo-oauth-client
 
+
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
